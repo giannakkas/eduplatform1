@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const JWT_SECRET = 'educational-platform-secret-key-2024';
 
 // In-memory storage
@@ -12,8 +12,19 @@ let users = [];
 let subjects = [];
 let lessons = [];
 
-// Middleware
-app.use(cors());
+// Middleware - Updated CORS configuration
+app.use(cors({
+  origin: [
+    'https://beautiful-cassata-73cf2f.netlify.app',
+    'https://09fda8c1-2150-4051-91b8-d702afbcc0de-00-1toxwqnxx2c5m.sisko.replit.dev',
+    'http://localhost:3000',
+    'http://localhost:3001'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 // Initialize demo data
