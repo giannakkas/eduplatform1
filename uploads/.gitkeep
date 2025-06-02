@@ -1,0 +1,6 @@
+# This file keeps the uploads directory in Git
+# The uploads folder is needed for file uploads functionality
+# but we don't want to track the actual uploaded files
+
+# Remove this file once you have real uploads, or keep it if you want 
+# to ensure the directory always exists in fresh clones
